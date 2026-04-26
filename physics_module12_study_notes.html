@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics 1 – Module 12: Momentum</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:      #1a1410;
+    --paper:    #faf7f2;
+    --cream:    #f2ede4;
+    --gold:     #c9922a;
+    --gold-lt:  #e8c06a;
+    --teal:     #1d6e72;
+    --teal-lt:  #d0eced;
+    --rose:     #9c3a3a;
+    --rose-lt:  #f5dede;
+    --slate:    #3a4a5c;
+    --slate-lt: #dde4ee;
+    --rule:     #c8bfb0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,146,42,.18) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,146,42,.08) 40px);
+    pointer-events: none;
+  }
+  header .badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold-lt);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: .3rem .9rem;
+    margin-bottom: 1.2rem;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+  }
+  header h1 span { color: var(--gold); }
+  header p.sub {
+    margin-top: .8rem;
+    font-size: 1rem;
+    color: #b8b0a4;
+    font-style: italic;
+  }
+
+  /* ── NAV ── */
+  nav.toc {
+    background: var(--cream);
+    border-bottom: 2px solid var(--rule);
+    padding: 1.1rem 2rem;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; align-items: center;
+  }
+  nav.toc span.label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--gold);
+    margin-right: .4rem;
+  }
+  nav.toc a {
+    font-size: .82rem;
+    color: var(--slate);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s, color .2s;
+  }
+  nav.toc a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+
+  /* ── LAYOUT ── */
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.6rem 6rem; }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-top: 3.6rem;
+    animation: fadeUp .5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .68rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex; align-items: center; gap: .7rem;
+    margin-bottom: .5rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.22rem;
+    font-weight: 700;
+    color: var(--teal);
+    margin: 1.8rem 0 .6rem;
+  }
+  h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: .95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--slate);
+    margin: 1.4rem 0 .4rem;
+  }
+
+  p { margin-bottom: .9rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-left: 4px solid var(--gold);
+    border-radius: 2px 6px 6px 2px;
+    padding: 1.2rem 1.6rem;
+    margin: 1.4rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .97rem;
+    line-height: 1.9;
+  }
+  .formula-box .eq { font-size: 1.05rem; color: var(--gold-lt); }
+  .formula-box .note { font-size: .8rem; color: #a09890; margin-top: .4rem; font-family: 'Source Serif 4', serif; font-style: italic; }
+
+  /* ── KEY CONCEPT ── */
+  .key-concept {
+    background: var(--teal-lt);
+    border-left: 4px solid var(--teal);
+    border-radius: 2px 6px 6px 2px;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+  }
+  .key-concept strong { color: var(--teal); }
+
+  /* ── CALLOUT / TIP ── */
+  .callout {
+    background: #fffbf0;
+    border: 1px solid var(--gold-lt);
+    border-left: 4px solid var(--gold);
+    border-radius: 2px 6px 6px 2px;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-size: .94rem;
+  }
+  .callout .callout-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .35rem;
+  }
+
+  /* ── WARNING ── */
+  .warning {
+    background: var(--rose-lt);
+    border-left: 4px solid var(--rose);
+    border-radius: 2px 6px 6px 2px;
+    padding: 1rem 1.4rem;
+    margin: 1.2rem 0;
+    font-size: .94rem;
+  }
+  .warning strong { color: var(--rose); }
+
+  /* ── SAMPLE PROBLEM ── */
+  .problem {
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.8rem 0;
+  }
+  .problem-header {
+    background: var(--slate);
+    color: #fff;
+    padding: .6rem 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .78rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .problem-header .prob-tag {
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: 3px;
+    padding: .15rem .5rem;
+    font-size: .68rem;
+  }
+  .problem-body { padding: 1.2rem 1.4rem; background: #fff; }
+  .problem-body .given {
+    background: var(--slate-lt);
+    border-radius: 4px;
+    padding: .8rem 1rem;
+    margin: .8rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .83rem;
+    line-height: 1.9;
+  }
+  .solution-steps {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: .9rem 1rem;
+    margin: .8rem 0;
+    font-size: .93rem;
+  }
+  .solution-steps ol { padding-left: 1.4rem; }
+  .solution-steps li { margin-bottom: .5rem; }
+  .solution-steps .math {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .88rem;
+    background: #fff;
+    display: inline-block;
+    padding: .1rem .45rem;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+  }
+  .final-answer {
+    background: var(--teal);
+    color: #fff;
+    border-radius: 4px;
+    padding: .7rem 1rem;
+    margin-top: .8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+  }
+  .final-answer strong { color: var(--gold-lt); }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 1.4rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+  }
+  thead tr { background: var(--slate); color: #fff; }
+  thead th {
+    padding: .75rem 1rem;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  tbody tr:nth-child(even) { background: var(--cream); }
+  tbody td { padding: .65rem 1rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tbody td:first-child { font-weight: 600; color: var(--teal); }
+
+  /* ── GRID CARDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.2rem 0; }
+  .card {
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .card .card-icon { font-size: 1.6rem; margin-bottom: .4rem; }
+  .card .card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--teal); margin-bottom: .35rem; }
+  .card p { font-size: .87rem; margin: 0; }
+
+  /* ── STEPS / PROCESS ── */
+  .steps { list-style: none; padding: 0; margin: 1rem 0; }
+  .steps li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: .7rem 0;
+    border-bottom: 1px dashed var(--rule);
+    font-size: .93rem;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li .step-num {
+    min-width: 2rem; height: 2rem;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: .8rem;
+    flex-shrink: 0;
+  }
+
+  /* ── DIVIDER ── */
+  hr.fancy {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rule) 20%, var(--rule) 80%, transparent);
+    margin: 3rem 0 2rem;
+  }
+
+  /* ── QUICK SUMMARY ── */
+  .summary-box {
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.4rem 1.6rem;
+    margin: 2rem 0;
+    background: #fffbf0;
+  }
+  .summary-box h4 { margin-top: 0; color: var(--gold); }
+  .summary-box ul { padding-left: 1.4rem; font-size: .93rem; }
+  .summary-box li { margin-bottom: .45rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    background: var(--ink);
+    color: #6e6660;
+    font-size: .82rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  footer span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    nav.toc { padding: .8rem 1rem; gap: .4rem 1rem; }
+    main { padding: 1.2rem 1rem 4rem; }
+    .problem-body { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<header>
+  <div class="badge">PHY 1 &nbsp;·&nbsp; Module 12.0 &nbsp;·&nbsp; Study Notes</div>
+  <h1>The Physics of <span>Momentum</span></h1>
+  <p class="sub">Lessons 12.1 · 12.2 · 12.3 · 12.4 &nbsp;—&nbsp; Philippine Science High School System</p>
+</header>
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav class="toc">
+  <span class="label">Jump to</span>
+  <a href="#s1">Momentum</a>
+  <a href="#s2">Impulse</a>
+  <a href="#s3">Conservation</a>
+  <a href="#s4">Inelastic</a>
+  <a href="#s5">Elastic</a>
+  <a href="#s6">Comparison</a>
+  <a href="#s7">Quick Review</a>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════ SECTION 1: MOMENTUM ═══════════════════ -->
+<section id="s1">
+  <div class="section-label">Lesson 12.1</div>
+  <h2>Momentum &amp; Linear Momentum</h2>
+
+  <p><strong>Linear momentum</strong> (often just called <em>momentum</em>) quantifies the motion of an object in translational or straight-line motion. Physicists describe it as the <em>inertia of a moving object</em>: the greater an object's momentum, the harder it is to change its motion.</p>
+
+  <div class="formula-box">
+    <div class="eq">𝒑⃗ = m𝒗⃗ &nbsp;&nbsp;&nbsp; [Eq. 1]</div>
+    <div class="note">
+      𝒑⃗ = momentum (vector) &nbsp;|&nbsp; m = mass (kg) &nbsp;|&nbsp; 𝒗⃗ = velocity (m/s)<br>
+      SI unit of momentum: <strong>kg·m/s</strong> (no special name)
+    </div>
+  </div>
+
+  <div class="key-concept">
+    <strong>Vector quantity:</strong> Momentum always points in the <em>same direction</em> as velocity. It can be split into horizontal and vertical components:<br>
+    <span style="font-family:'JetBrains Mono',monospace; font-size:.9rem;">𝒑ₓ = m𝒗ₓ &nbsp;&nbsp; 𝒑ᵧ = m𝒗ᵧ</span>
+  </div>
+
+  <h3>Momentum and Kinetic Energy</h3>
+  <p>Since both momentum and kinetic energy involve mass and velocity, they are related. Starting from <span style="font-family:'JetBrains Mono',monospace;">KE = ½mv²</span> and substituting <span style="font-family:'JetBrains Mono',monospace;">p = mv</span>:</p>
+
+  <div class="formula-box">
+    <div class="eq">KE = p² / (2m) &nbsp;&nbsp;&nbsp; [Eq. 7]</div>
+    <div class="note">Kinetic energy can be expressed entirely in terms of momentum and mass.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 Intuition</div>
+    A massive truck and a fast sports car can have the <em>same</em> momentum if the car's velocity compensates for the truck's extra mass. <strong>Either mass or speed (or both) contribute to momentum.</strong>
+  </div>
+
+  <!-- Sample Problem 1 -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 1 — Swallow in Flight
+      <span class="prob-tag">Lesson 12.1</span>
+    </div>
+    <div class="problem-body">
+      <p>What is the magnitude of the momentum of a <strong>28 g swallow</strong> flying at <strong>8.4 m/s</strong>?</p>
+      <div class="given">
+        Given:<br>
+        m = 28 g = 0.028 kg<br>
+        v = 8.4 m/s
+      </div>
+      <div class="solution-steps">
+        <strong>Solution:</strong>
+        <ol>
+          <li>Use the momentum formula: <span class="math">𝒑 = m𝒗</span></li>
+          <li>Substitute: <span class="math">𝒑 = (0.028 kg)(8.4 m/s)</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> 𝒑 = 0.24 kg·m/s &nbsp;(in the direction of flight)</div>
+    </div>
+  </div>
+
+  <!-- Sample Problem 2 -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 2 — Truck vs. SUV
+      <span class="prob-tag">Lesson 12.1</span>
+    </div>
+    <div class="problem-body">
+      <p>A <strong>1.0 × 10⁴ kg truck</strong> travels at <strong>12.0 m/s</strong>. (a) Find its momentum. (b) What speed must a <strong>2.0 × 10³ kg SUV</strong> reach to have the same momentum?</p>
+      <div class="given">
+        Given:<br>
+        m_truck = 1.0 × 10⁴ kg &nbsp;|&nbsp; v_truck = 12.0 m/s<br>
+        m_SUV = 2.0 × 10³ kg
+      </div>
+      <div class="solution-steps">
+        <strong>Part (a) — Truck's momentum:</strong>
+        <ol>
+          <li><span class="math">𝒑 = m𝒗 = (1.0 × 10⁴ kg)(12.0 m/s)</span></li>
+        </ol>
+        <div class="final-answer" style="margin:0.6rem 0;"><strong>𝒑_truck</strong> = 1.2 × 10⁵ kg·m/s</div>
+        <strong>Part (b) — Required SUV velocity:</strong>
+        <ol>
+          <li>Set <span class="math">p_SUV = p_truck → mv = 1.2 × 10⁵</span></li>
+          <li><span class="math">v = p / m = (1.2 × 10⁵) / (2.0 × 10³)</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> v_SUV = <strong>60.0 m/s</strong> &nbsp;(much faster than the truck!)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 2: IMPULSE ═══════════════════ -->
+<section id="s2">
+  <div class="section-label">Lesson 12.2</div>
+  <h2>Impulse &amp; the Impulse-Momentum Theorem</h2>
+
+  <p>Newton originally stated his Second Law in terms of momentum: the <em>net force</em> on an object equals its <em>time rate of change of momentum</em>.</p>
+
+  <div class="formula-box">
+    <div class="eq">𝑭⃗_net = Δ𝒑⃗ / Δt &nbsp;&nbsp;&nbsp; [Eq. 4]</div>
+    <div class="note">Rearranging: the product of force × time creates a change in momentum.</div>
+  </div>
+
+  <h3>Impulse Defined</h3>
+  <p><strong>Impulse (J⃗)</strong> is the product of the net force and the time interval over which it acts. Its SI unit is the <strong>newton-second (N·s)</strong>, which is equivalent to kg·m/s.</p>
+
+  <div class="formula-box">
+    <div class="eq">𝑱⃗ = 𝑭⃗_net · Δt &nbsp;&nbsp;&nbsp; [Impulse definition]</div>
+    <div class="eq">𝑱⃗ = Δ𝒑⃗ = m·Δ𝒗⃗ &nbsp;&nbsp;&nbsp; [Impulse-Momentum Theorem]</div>
+    <div class="note">The impulse experienced by an object equals its change in momentum.</div>
+  </div>
+
+  <div class="key-concept">
+    <strong>Key Insight:</strong> For the <em>same change in momentum</em>, a <em>longer contact time</em> means a <em>smaller average force</em>, and vice versa. This is why catching an egg with arms pulled back (longer Δt) prevents it from breaking.
+  </div>
+
+  <h3>Real-World Applications</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">🥊</div>
+      <div class="card-title">Boxing</div>
+      <p>Short contact time → large force. Agility (quick punches) matters as much as strength.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏃</div>
+      <div class="card-title">Long Jump</div>
+      <p>Bending knees on landing extends Δt, reducing the impact force on joints.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎾</div>
+      <div class="card-title">Tennis / Baseball</div>
+      <p>Following through increases contact time, building greater momentum change in the ball.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🥚</div>
+      <div class="card-title">Egg Catch Game</div>
+      <p>Step backward as you catch to increase contact time and avoid breaking the egg.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚗</div>
+      <div class="card-title">Airbags</div>
+      <p>Inflate to increase the stopping time of a passenger, dramatically lowering the impact force.</p>
+    </div>
+  </div>
+
+  <!-- Sample Problem 1 - Impulse -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 1 — Ball Bouncing off Wall
+      <span class="prob-tag">Lesson 12.2</span>
+    </div>
+    <div class="problem-body">
+      <p>A 0.40 kg ball moves <strong>left at 30.0 m/s</strong>, hits a wall, and rebounds <strong>right at 20.0 m/s</strong>. Contact time = <strong>0.010 s</strong>. Find (a) impulse, (b) average force.</p>
+      <div class="given">
+        Given:<br>
+        m = 0.40 kg<br>
+        v_i = −30.0 m/s (left = negative)<br>
+        v_f = +20.0 m/s (right = positive)<br>
+        Δt = 0.010 s
+      </div>
+      <div class="solution-steps">
+        <strong>Part (a) — Impulse:</strong>
+        <ol>
+          <li><span class="math">J = mΔv = m(v_f − v_i)</span></li>
+          <li><span class="math">J = (0.40)(20.0 − (−30.0))</span></li>
+          <li><span class="math">J = (0.40)(50.0) = 20.0 N·s</span></li>
+        </ol>
+        <em>The positive sign confirms the impulse (and force from wall) is directed rightward.</em><br><br>
+        <strong>Part (b) — Average Force:</strong>
+        <ol>
+          <li><span class="math">F_net = J / Δt = 20.0 / 0.010</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answers:</strong> (a) J = 20.0 N·s &nbsp;|&nbsp; (b) F = <strong>2.0 × 10³ N</strong> (rightward)</div>
+    </div>
+  </div>
+
+  <!-- Sample Problem 2 - Impulse -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 2 — Vehicle Stopping Comparison
+      <span class="prob-tag">Lesson 12.2</span>
+    </div>
+    <div class="problem-body">
+      <p>A <strong>2200 kg vehicle</strong> moving at <strong>26.0 m/s</strong> is stopped in: (a) 21.0 s (gentle braking), (b) 3.8 s (hard braking), (c) 0.22 s (concrete wall). Find the average force in each case.</p>
+      <div class="given">
+        m = 2200 kg &nbsp;|&nbsp; v_i = 26.0 m/s &nbsp;|&nbsp; v_f = 0 m/s
+      </div>
+      <div class="solution-steps">
+        <strong>Formula:</strong> <span class="math">F_net = mΔv / Δt = (2200)(0 − 26) / Δt</span>
+        <ol>
+          <li>(a) Δt = 21.0 s &nbsp;→&nbsp; <span class="math">F = −2.7 × 10³ N</span></li>
+          <li>(b) Δt = 3.8 s &nbsp;→&nbsp; <span class="math">F = −1.5 × 10⁴ N</span></li>
+          <li>(c) Δt = 0.22 s &nbsp;→&nbsp; <span class="math">F = −2.6 × 10⁵ N</span></li>
+        </ol>
+        <em>Negative sign = force opposes motion (stopping force).</em>
+      </div>
+      <div class="final-answer">
+        <strong>Lesson:</strong> Shorter contact time → enormously larger force. A wall collision (0.22 s) produces ~100× more force than gentle braking (21.0 s) for the same momentum change!
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 3: CONSERVATION ═══════════════ -->
+<section id="s3">
+  <div class="section-label">Lesson 12.3</div>
+  <h2>Conservation of Momentum</h2>
+
+  <p>From Newton's Third Law, when two objects interact (collide), they exert equal and opposite forces on each other. This means their impulses are equal in magnitude but opposite in direction — so their momentum changes cancel out.</p>
+
+  <div class="formula-box">
+    <div class="eq">If 𝑭⃗_net,external = 0 &nbsp;→&nbsp; Δ𝒑⃗_total = 0 &nbsp;→&nbsp; 𝒑⃗_total,i = 𝒑⃗_total,f</div>
+    <div class="note"><strong>Law of Conservation of Momentum:</strong> In the absence of a net external force, the total momentum of a closed system remains unchanged.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">🔑 Critical Condition</div>
+    Only <strong>external</strong> forces change a system's total momentum. Forces between objects within the system (internal forces) cancel each other out — they do NOT change total momentum. The billiard-table's normal force cancels gravity; the forces between the balls are internal.
+  </div>
+
+  <h3>Cannon-Ball System Illustration</h3>
+  <p>Before firing: both barrel and ball are at rest → total momentum = 0. After firing: ball moves forward, barrel recoils backward with the same magnitude of momentum. Total momentum is still 0. This is why rockets work in empty space!</p>
+
+  <h3>Inelastic Collision &amp; Conservation</h3>
+  <p>Even when colliding objects deform, generate heat, or stick together, <strong>momentum is still conserved</strong> as long as there is no net external force. The type of collision only affects whether kinetic energy is conserved.</p>
+
+  <!-- Fish problem -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem — Big Fish Eats Small Fish
+      <span class="prob-tag">Lesson 12.3</span>
+    </div>
+    <div class="problem-body">
+      <p>A <strong>5 kg big fish</strong> swims at <strong>1 m/s (right)</strong> toward a <strong>1 kg small fish at rest</strong>. After the big fish swallows the small fish, what is the combined velocity?</p>
+      <div class="given">
+        m₁ = 5 kg, v₁ = 1 m/s &nbsp;|&nbsp; m₂ = 1 kg, v₂ = 0 m/s
+      </div>
+      <div class="solution-steps">
+        <strong>Apply Conservation of Momentum:</strong>
+        <ol>
+          <li>Total momentum before = total momentum after</li>
+          <li><span class="math">(5)(1) + (1)(0) = (5 + 1) · v_after</span></li>
+          <li><span class="math">5 = 6 · v_after</span></li>
+          <li><span class="math">v_after = 5/6 ≈ 0.833 m/s</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> v_after = <strong>5/6 m/s ≈ 0.833 m/s</strong> (rightward) — slower than before because mass increased.</div>
+    </div>
+  </div>
+
+  <!-- Cart problem -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem — Gliding Carts on Air Track
+      <span class="prob-tag">Lesson 12.3</span>
+    </div>
+    <div class="problem-body">
+      <p>A <strong>0.5 kg gliding cart</strong> bumps into and sticks to a <strong>stationary 1.5 kg cart</strong>. How fast do the coupled carts move after collision?</p>
+      <div class="given">
+        m₁ = 0.5 kg, v_before = v_before &nbsp;|&nbsp; m₂ = 1.5 kg, v₂ = 0
+      </div>
+      <div class="solution-steps">
+        <ol>
+          <li><span class="math">(0.5)v_before = (0.5 + 1.5) · v_after</span></li>
+          <li><span class="math">v_after = (0.5 / 2.0) · v_before</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> v_after = <strong>¼ v_before</strong> — the combined mass is 4× the original, so speed drops to one-quarter.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 4: INELASTIC ═══════════════════ -->
+<section id="s4">
+  <div class="section-label">Lesson 12.4.1</div>
+  <h2>Inelastic Collisions</h2>
+
+  <p>A collision is <strong>inelastic</strong> when kinetic energy is <em>not</em> conserved — some is converted to deformation, heat, or sound. Momentum is still conserved (as always, if no net external force).</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Inelastic</th><th>Perfectly Inelastic</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Momentum</td><td>Conserved ✓</td><td>Conserved ✓</td></tr>
+        <tr><td>Kinetic Energy</td><td>NOT conserved ✗</td><td>NOT conserved ✗ (maximum loss)</td></tr>
+        <tr><td>Objects after</td><td>Separate with different velocities</td><td>Stick together (move as one)</td></tr>
+        <tr><td>Formula</td><td>m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁f + m₂v₂f</td><td>m₁v₁ᵢ + m₂v₂ᵢ = (m₁ + m₂)v_f</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warning">
+    <strong>Common Mistake:</strong> Students often assume momentum is <em>not</em> conserved in inelastic collisions. It always is, as long as there are no net external forces. What changes is kinetic energy.
+  </div>
+
+  <h3>Key Observations from the Virtual Lab (Part A)</h3>
+  <ul class="steps">
+    <li><span class="step-num">1</span><span><strong>Total velocity changes:</strong> The sum of velocities before and after collision are generally not equal. The carts merge and slow down.</span></li>
+    <li><span class="step-num">2</span><span><strong>Total momentum is conserved:</strong> p₁ᵢ + p₂ᵢ = p₁f + p₂f even though objects stick together.</span></li>
+    <li><span class="step-num">3</span><span><strong>Momentum transfer is equal &amp; opposite:</strong> The momentum gained by cart 2 equals the momentum lost by cart 1.</span></li>
+    <li><span class="step-num">4</span><span><strong>Kinetic energy DECREASES:</strong> Some KE is lost to deformation/heat. KE_before &gt; KE_after.</span></li>
+    <li><span class="step-num">5</span><span><strong>Elasticity = 0.5 (intermediate):</strong> Objects separate (unlike perfectly inelastic), less KE is lost than perfectly inelastic, but more than elastic. Momentum still conserved.</span></li>
+  </ul>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 5: ELASTIC ═══════════════════ -->
+<section id="s5">
+  <div class="section-label">Lesson 12.4.2</div>
+  <h2>Elastic Collisions</h2>
+
+  <p>A collision is <strong>elastic</strong> when <em>both</em> momentum AND kinetic energy are conserved. No energy is lost to permanent deformation or heat. Ideal elastic collisions occur in atomic/subatomic interactions and are approximated by billiard balls and gas molecules.</p>
+
+  <div class="formula-box">
+    <div class="eq">Conservation of Momentum: m_A·v_A + m_B·v_B = m_A·v'_A + m_B·v'_B</div>
+    <div class="eq">Conservation of KE: ½m_A·v_A² + ½m_B·v_B² = ½m_A·v'_A² + ½m_B·v'_B²</div>
+    <div class="note">Both equations must be satisfied simultaneously in elastic collisions.</div>
+  </div>
+
+  <h3>The Relative Velocity Condition (Key Feature)</h3>
+  <p>Combining both conservation laws for elastic collisions yields a powerful result:</p>
+
+  <div class="formula-box">
+    <div class="eq">v_A − v_B = v'_B − v'_A &nbsp;&nbsp;&nbsp; [Eqn 5]</div>
+    <div class="note">The relative velocity of approach equals the relative velocity of separation (but opposite in sign). This is the defining characteristic of elastic collisions.</div>
+  </div>
+
+  <h3>Special Case: Equal Masses</h3>
+  <p>When m_A = m_B, solving both equations simultaneously gives:</p>
+  <div class="formula-box">
+    <div class="eq">v'_A = v_B &nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp; v'_B = v_A</div>
+    <div class="note">Equal-mass objects simply <strong>swap velocities</strong> in an elastic collision. If one is at rest, it moves and the other stops completely.</div>
+  </div>
+
+  <h3>Key Observations from the Virtual Lab (Parts B–D)</h3>
+  <ul class="steps">
+    <li><span class="step-num">1</span><span><strong>Velocity swap (equal mass only):</strong> Carts exchange velocities. If masses differ, they do NOT simply swap.</span></li>
+    <li><span class="step-num">2</span><span><strong>Momentum swap (equal mass only):</strong> Since p = mv and masses are equal, swapping velocities swaps momentum too.</span></li>
+    <li><span class="step-num">3</span><span><strong>Direction reversal not always:</strong> A cart doesn't always reverse direction — it depends on the mass ratio and initial velocities.</span></li>
+    <li><span class="step-num">4</span><span><strong>Total velocity sum changes:</strong> Unlike momentum, the sum of individual velocities is generally not conserved.</span></li>
+    <li><span class="step-num">5</span><span><strong>Total momentum is conserved:</strong> Always. p_total,before = p_total,after.</span></li>
+    <li><span class="step-num">6</span><span><strong>Momentum transfers are equal &amp; opposite:</strong> Same as inelastic — Newton's Third Law governs this.</span></li>
+    <li><span class="step-num">7</span><span><strong>Total kinetic energy is conserved:</strong> KE_before = KE_after. This is the key distinction from inelastic collisions.</span></li>
+  </ul>
+
+  <!-- Elastic Sample Problem 1 -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 1 — Equal-Mass Billiard Balls
+      <span class="prob-tag">Lesson 12.4.2</span>
+    </div>
+    <div class="problem-body">
+      <p>Ball A (mass m) moves at v_A; Ball B (mass m) moves at v_B. Elastic collision. Find v'_A and v'_B.</p>
+      <div class="given">m_A = m_B = m (same mass)</div>
+      <div class="solution-steps">
+        <strong>Using both conservation equations:</strong>
+        <ol>
+          <li>Momentum: <span class="math">v_A + v_B = v'_A + v'_B</span></li>
+          <li>Relative velocity: <span class="math">v_A − v_B = v'_B − v'_A</span></li>
+          <li>Add the two equations: <span class="math">2v_A = 2v'_B → v'_B = v_A</span></li>
+          <li>Subtract: <span class="math">2v_B = 2v'_A → v'_A = v_B</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> The balls <strong>swap velocities</strong>. v'_A = v_B and v'_B = v_A. If B was at rest (v_B = 0): A stops and B moves with A's original speed.</div>
+    </div>
+  </div>
+
+  <!-- Elastic Sample Problem 2 -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 2 — Gliders on Air Track (Different Masses)
+      <span class="prob-tag">Lesson 12.4.2</span>
+    </div>
+    <div class="problem-body">
+      <p>Glider A: <strong>m_A = 0.150 kg</strong>, moving right at <strong>0.800 m/s</strong>. Glider B: <strong>m_B = 0.300 kg</strong>, moving left at <strong>2.20 m/s</strong>. Elastic collision. Find final velocities.</p>
+      <div class="given">
+        v_A = +0.800 m/s (right) &nbsp;|&nbsp; v_B = −2.20 m/s (left)
+      </div>
+      <div class="solution-steps">
+        <strong>Set up two equations:</strong>
+        <ol>
+          <li>Momentum: <span class="math">(0.150)(0.800) + (0.300)(−2.20) = 0.150·v'_A + 0.300·v'_B</span></li>
+          <li>Simplify: <span class="math">0.120 − 0.660 = 0.150·v'_A + 0.300·v'_B</span></li>
+          <li><span class="math">−0.540 = 0.150·v'_A + 0.300·v'_B &nbsp;···(i)</span></li>
+          <li>Relative velocity: <span class="math">v_A − v_B = v'_B − v'_A</span></li>
+          <li><span class="math">0.800 − (−2.20) = v'_B − v'_A</span></li>
+          <li><span class="math">3.00 = v'_B − v'_A &nbsp;···(ii)</span></li>
+          <li>From (ii): <span class="math">v'_B = v'_A + 3.00</span>. Sub into (i):</li>
+          <li><span class="math">−0.540 = 0.150·v'_A + 0.300·(v'_A + 3.00)</span></li>
+          <li><span class="math">−0.540 = 0.450·v'_A + 0.900 → 0.450·v'_A = −1.44</span></li>
+          <li><span class="math">v'_A = −3.20 m/s &nbsp;(leftward)</span></li>
+          <li><span class="math">v'_B = −3.20 + 3.00 = −0.200 m/s &nbsp;(leftward)</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> v'_A = <strong>−3.20 m/s</strong> (A reverses and goes left) &nbsp;|&nbsp; v'_B = <strong>−0.200 m/s</strong> (B slows but continues left)</div>
+    </div>
+  </div>
+
+  <!-- Proton-Helium Problem -->
+  <div class="problem">
+    <div class="problem-header">
+      Sample Problem 3 — Proton–Helium Collision
+      <span class="prob-tag">Lesson 12.4.2</span>
+    </div>
+    <div class="problem-body">
+      <p>A <strong>proton</strong> (m_p = 1.01 u) moves at <strong>3.60 × 10⁴ m/s</strong> and elastically collides head-on with a <strong>helium nucleus</strong> (m_He = 4.00 u) initially at rest.</p>
+      <div class="given">
+        v_p = 3.60 × 10⁴ m/s &nbsp;|&nbsp; v_He = 0
+      </div>
+      <div class="solution-steps">
+        <strong>Using elastic collision formulas for unequal masses:</strong>
+        <ol>
+          <li><span class="math">v'_p = [(m_p − m_He)/(m_p + m_He)] · v_p</span></li>
+          <li><span class="math">v'_p = [(1.01 − 4.00)/(1.01 + 4.00)] · 3.60×10⁴</span></li>
+          <li><span class="math">v'_p = [−2.99/5.01] · 3.60×10⁴ ≈ −2.15×10⁴ m/s</span></li>
+          <li><span class="math">v'_He = [2m_p/(m_p + m_He)] · v_p</span></li>
+          <li><span class="math">v'_He = [2(1.01)/5.01] · 3.60×10⁴ ≈ +1.45×10⁴ m/s</span></li>
+        </ol>
+      </div>
+      <div class="final-answer"><strong>Answer:</strong> Proton bounces back at <strong>≈ 2.15 × 10⁴ m/s</strong>; Helium moves forward at <strong>≈ 1.45 × 10⁴ m/s</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 6: COMPARISON ═══════════════════ -->
+<section id="s6">
+  <div class="section-label">Summary Table</div>
+  <h2>Elastic vs. Inelastic Collisions</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Perfectly Inelastic</th>
+          <th>Inelastic</th>
+          <th>Elastic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Objects after</td>
+          <td>Stick together (one body)</td>
+          <td>Separate</td>
+          <td>Separate</td>
+        </tr>
+        <tr>
+          <td>Momentum conserved?</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+          <td>✅ Yes</td>
+        </tr>
+        <tr>
+          <td>Kinetic energy conserved?</td>
+          <td>❌ No (maximum loss)</td>
+          <td>❌ No (partial loss)</td>
+          <td>✅ Yes (no loss)</td>
+        </tr>
+        <tr>
+          <td>Deformation / heat</td>
+          <td>✅ Yes (most)</td>
+          <td>✅ Some</td>
+          <td>❌ None (ideal)</td>
+        </tr>
+        <tr>
+          <td>Elasticity setting</td>
+          <td>0.0</td>
+          <td>0.1 – 0.9</td>
+          <td>1.0</td>
+        </tr>
+        <tr>
+          <td>Equal-mass behavior</td>
+          <td>Move together at v_avg</td>
+          <td>Varies</td>
+          <td>Swap velocities</td>
+        </tr>
+        <tr>
+          <td>Real examples</td>
+          <td>Car crash (stuck together), bullet in block</td>
+          <td>Most real-world collisions</td>
+          <td>Billiard balls, atomic collisions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="fancy">
+
+<!-- ═══════════════════════════════ SECTION 7: QUICK REVIEW ═══════════════ -->
+<section id="s7">
+  <div class="section-label">Quick Review</div>
+  <h2>Key Takeaways &amp; Formula Sheet</h2>
+
+  <div class="summary-box">
+    <h4>📐 All Essential Formulas</h4>
+    <ul>
+      <li><strong>Momentum:</strong> 𝒑⃗ = m𝒗⃗ &nbsp;(kg·m/s)</li>
+      <li><strong>Components:</strong> pₓ = mvₓ ; pᵧ = mvᵧ</li>
+      <li><strong>KE–momentum relation:</strong> KE = p² / 2m</li>
+      <li><strong>Net force (Newton's 2nd):</strong> F⃗_net = Δp⃗/Δt</li>
+      <li><strong>Impulse:</strong> J⃗ = F⃗_net · Δt &nbsp;(N·s)</li>
+      <li><strong>Impulse-Momentum Theorem:</strong> J⃗ = Δp⃗ = mΔv⃗</li>
+      <li><strong>Conservation of Momentum:</strong> p⃗_total,i = p⃗_total,f (when F_net,ext = 0)</li>
+      <li><strong>Perfectly inelastic:</strong> (m₁+m₂)v_f = m₁v₁ᵢ + m₂v₂ᵢ</li>
+      <li><strong>Elastic – momentum:</strong> m₁v₁ + m₂v₂ = m₁v'₁ + m₂v'₂</li>
+      <li><strong>Elastic – kinetic energy:</strong> ½m₁v₁² + ½m₂v₂² = ½m₁v'₁² + ½m₂v'₂²</li>
+      <li><strong>Elastic – relative velocity:</strong> v₁ − v₂ = v'₂ − v'₁</li>
+      <li><strong>Elastic – equal mass:</strong> v'₁ = v₂ and v'₂ = v₁ (velocity swap)</li>
+    </ul>
+  </div>
+
+  <div class="summary-box">
+    <h4>🧠 Conceptual Reminders</h4>
+    <ul>
+      <li>Momentum is a <strong>vector</strong> — direction matters! Use +/− signs consistently.</li>
+      <li>Momentum is <strong>always conserved</strong> in collisions with no net external force, regardless of collision type.</li>
+      <li>Kinetic energy is only conserved in <strong>elastic</strong> collisions.</li>
+      <li>Impulse = area under a Force-vs-Time graph.</li>
+      <li>To reduce impact force: <strong>increase contact time</strong> (airbags, bending knees, follow-through).</li>
+      <li>In elastic equal-mass collisions, the balls always <strong>swap velocities</strong>.</li>
+      <li>The Law of Conservation of Momentum applies even during radioactive decay and stellar explosions — not just collisions.</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">⚡ Problem-Solving Strategy</div>
+    <strong>1.</strong> Define a sign convention (e.g., right = positive). &nbsp;
+    <strong>2.</strong> List all known quantities. &nbsp;
+    <strong>3.</strong> Identify collision type (elastic/inelastic). &nbsp;
+    <strong>4.</strong> Write conservation of momentum equation. &nbsp;
+    <strong>5.</strong> For elastic: add the relative-velocity equation as a second equation. &nbsp;
+    <strong>6.</strong> Solve the system of equations. &nbsp;
+    <strong>7.</strong> Check: does the answer make physical sense?
+  </div>
+</section>
+
+</main>
+
+<footer>
+  PHY 1 · Module 12.0 · Momentum &nbsp;|&nbsp; Philippine Science High School System &nbsp;|&nbsp;
+  <span>Study Notes compiled for reference purposes</span>
+</footer>
+
+</body>
+</html>
