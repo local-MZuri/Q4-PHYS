@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English 3 — Module 4: The 20th Century | Study Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf7f2;
+    --bg2: #f3ede3;
+    --ink: #1c1a16;
+    --ink-light: #4a4438;
+    --gold: #c9952a;
+    --gold-light: #e8c87a;
+    --gold-pale: #f5e9c8;
+    --rust: #9e3d2b;
+    --teal: #2a7068;
+    --teal-light: #3d9990;
+    --teal-pale: #d4edea;
+    --navy: #1e2d50;
+    --navy-light: #2e4472;
+    --navy-pale: #d6dff0;
+    --blush: #c4614a;
+    --blush-pale: #f9e5e0;
+    --purple: #5c3d7a;
+    --purple-pale: #e8dff3;
+    --border: #d8cdb8;
+    --shadow: rgba(28,26,22,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ───── HEADER ───── */
+  .site-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.025) 40px,
+      rgba(255,255,255,0.025) 41px
+    );
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--teal-light), var(--blush), var(--gold));
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .header-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    border: 1px solid rgba(201,149,42,0.4);
+    padding: 0.3em 0.9em;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .header-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .header-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-top: 0.7rem;
+  }
+  .header-meta {
+    margin-top: 1.8rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.1em;
+  }
+  .meta-pill span { color: var(--gold-light); }
+
+  /* ───── NAV TABLE OF CONTENTS ───── */
+  .toc-strip {
+    background: var(--navy-light);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .toc-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-link {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.1rem;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc-link:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+
+  /* ───── MAIN LAYOUT ───── */
+  main { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+  /* ───── LESSON SECTIONS ───── */
+  .lesson {
+    margin-bottom: 4.5rem;
+    scroll-margin-top: 60px;
+  }
+  .lesson-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .lesson-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #fff;
+    background: var(--navy);
+    padding: 0.3em 0.7em;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+  .lesson-title-wrap { flex: 1; }
+  .lesson-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .lesson-byline {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+  .lesson-targets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.8rem;
+    background: var(--navy-pale);
+    border-left: 3px solid var(--navy);
+    padding: 0.9rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+  }
+  .lesson-targets .t-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .lesson-targets li {
+    font-size: 0.95rem;
+    color: var(--navy-light);
+    list-style: none;
+    padding-left: 1.1em;
+    position: relative;
+  }
+  .lesson-targets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* ───── CONTENT BLOCKS ───── */
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 2rem 0 0.7rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    margin: 1.5rem 0 0.5rem;
+  }
+  p { margin-bottom: 0.9rem; }
+
+  /* ───── POEM BLOCK ───── */
+  .poem-block {
+    background: var(--ink);
+    color: #f5f0e8;
+    border-radius: 8px;
+    padding: 2rem 2.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .poem-block::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: rgba(201,149,42,0.15);
+    position: absolute;
+    top: -1.5rem; left: 0.8rem;
+    line-height: 1;
+  }
+  .poem-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.8rem;
+    font-style: normal;
+  }
+  .poem-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    line-height: 2;
+    white-space: pre-wrap;
+    color: #f0ead8;
+    position: relative;
+    z-index: 1;
+  }
+  .poem-attribution {
+    margin-top: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  /* ───── CONCEPT CARD ───── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 1.2rem 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .card--gold::after { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .card--teal::after { background: linear-gradient(90deg, var(--teal), var(--teal-light)); }
+  .card--rust::after { background: linear-gradient(90deg, var(--rust), var(--blush)); }
+  .card--navy::after { background: linear-gradient(90deg, var(--navy), var(--navy-light)); }
+  .card--purple::after { background: linear-gradient(90deg, var(--purple), #8b5cba); }
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.4rem;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .card p { font-size: 0.92rem; color: var(--ink-light); margin: 0; }
+
+  /* ───── CALLOUT / HIGHLIGHT BOX ───── */
+  .callout {
+    border-radius: 6px;
+    padding: 1.1rem 1.4rem;
+    margin: 1.2rem 0;
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05rem; }
+  .callout-body { flex: 1; }
+  .callout-body strong { display: block; margin-bottom: 0.2rem; font-size: 0.95rem; }
+  .callout-body p { font-size: 0.93rem; margin: 0; }
+  .callout--gold { background: var(--gold-pale); border-left: 4px solid var(--gold); }
+  .callout--teal { background: var(--teal-pale); border-left: 4px solid var(--teal); }
+  .callout--rust { background: var(--blush-pale); border-left: 4px solid var(--rust); }
+  .callout--navy { background: var(--navy-pale); border-left: 4px solid var(--navy); }
+  .callout--purple { background: var(--purple-pale); border-left: 4px solid var(--purple); }
+
+  /* ───── TABLE ───── */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.93rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .styled-table th {
+    background: var(--ink);
+    color: var(--gold-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 500;
+  }
+  .styled-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table tr:nth-child(even) td { background: var(--bg2); }
+  .styled-table td:first-child { font-weight: 600; color: var(--ink); }
+
+  /* ───── TENETS LIST ───── */
+  .tenet {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .tenet-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--gold);
+    color: #fff;
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .tenet-body strong { display: block; font-size: 0.96rem; color: var(--ink); margin-bottom: 0.2rem; }
+  .tenet-body p { font-size: 0.91rem; color: var(--ink-light); margin: 0; }
+
+  /* ───── QUOTE PULL ───── */
+  .pull-quote {
+    border-left: 4px solid var(--gold);
+    margin: 1.8rem 0;
+    padding: 0.6rem 1.5rem;
+  }
+  .pull-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .pull-quote cite {
+    display: block;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: var(--ink-light);
+    margin-top: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ───── CUMMINGS CONCRETE POEM ───── */
+  .concrete-poem {
+    background: var(--ink);
+    color: #f0ead8;
+    border-radius: 8px;
+    padding: 2rem 2.2rem;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  .concrete-poem .poem-title { text-align: center; }
+  .concrete-poem .poem-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 2.4;
+    letter-spacing: 0.08em;
+    display: block;
+    text-align: center;
+  }
+
+  /* ───── ANALYSIS TABLE ───── */
+  .inference-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.92rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .inference-table th {
+    background: var(--teal);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  .inference-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .inference-table tr:last-child td { border-bottom: none; }
+  .inference-table tr:nth-child(even) td { background: var(--teal-pale); }
+  .inference-table td:first-child { font-style: italic; color: var(--teal); font-weight: 600; }
+
+  /* ───── CHARACTER PROFILE ───── */
+  .char-profile {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .char-profile-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .char-profile-header .char-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .char-profile-header .char-role {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+  }
+  .char-profile-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .char-trait {
+    padding: 0.9rem 1.2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .char-trait:nth-child(2n) { border-right: none; }
+  .char-trait:nth-last-child(-n+2) { border-bottom: none; }
+  .char-trait-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.3rem;
+  }
+  .char-trait p { font-size: 0.9rem; margin: 0; color: var(--ink); }
+
+  /* ───── SYNTHESIS STRUCTURE ───── */
+  .synth-structure {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .synth-structure .s-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+  .synth-tree { display: flex; flex-direction: column; gap: 0.5rem; }
+  .synth-section { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--gold-light); font-weight: 500; margin-top: 0.7rem; }
+  .synth-item { font-size: 0.88rem; color: rgba(255,255,255,0.75); padding-left: 1.4rem; }
+  .synth-item::before { content: '↳ '; color: rgba(255,255,255,0.3); }
+
+  /* ───── DIVIDER ───── */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4rem 0;
+    position: relative;
+  }
+  .section-divider::after {
+    content: '✦';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg);
+    color: var(--gold);
+    padding: 0 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  /* ───── KEY TERMS GRID ───── */
+  .key-terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.8rem;
+    margin: 1.2rem 0;
+  }
+  .term-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+  }
+  .term-word {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.98rem;
+    color: var(--rust);
+    margin-bottom: 0.2rem;
+  }
+  .term-def { font-size: 0.88rem; color: var(--ink-light); }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  footer span { color: var(--gold-light); }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 600px) {
+    main { padding: 2rem 1.2rem 4rem; }
+    .card-grid { grid-template-columns: 1fr; }
+    .char-profile-body { grid-template-columns: 1fr; }
+    .char-trait { border-right: none; }
+    .char-trait:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+    .char-trait:last-child { border-bottom: none; }
+    .lesson-header { flex-direction: column; gap: 0.6rem; }
+  }
+
+  /* ───── ANIMATIONS ───── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .lesson { animation: fadeUp 0.5s ease both; }
+  .lesson:nth-child(2) { animation-delay: 0.05s; }
+  .lesson:nth-child(3) { animation-delay: 0.1s; }
+  .lesson:nth-child(4) { animation-delay: 0.15s; }
+  .lesson:nth-child(5) { animation-delay: 0.2s; }
+  .lesson:nth-child(6) { animation-delay: 0.25s; }
+  .lesson:nth-child(7) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-badge">Eng 3 · Module 4.0</div>
+    <h1 class="header-title">The <em>20th Century</em><br>in Literature</h1>
+    <p class="header-sub">Study Notes — Philippine Science High School System</p>
+    <div class="header-meta">
+      <div class="meta-pill">Lessons: <span>4.1 – 4.7</span></div>
+      <div class="meta-pill">Authors: <span>Pound · Cummings · Hughes · Angelou · Hemingway</span></div>
+      <div class="meta-pill">Focus: <span>Imagism · Modernism · Harlem Renaissance</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ STICKY NAV ══════════ -->
+<nav class="toc-strip">
+  <div class="toc-inner">
+    <a class="toc-link" href="#l41">4.1 Metro</a>
+    <a class="toc-link" href="#l42">4.2 Leaf Falls</a>
+    <a class="toc-link" href="#l43">4.3 Mother to Son</a>
+    <a class="toc-link" href="#l44">4.4 Graduation</a>
+    <a class="toc-link" href="#l45">4.5 White Elephants</a>
+    <a class="toc-link" href="#l46">4.6 Characterization</a>
+    <a class="toc-link" href="#l47">4.7 Synthesis Paper</a>
+  </div>
+</nav>
+
+<!-- ══════════ MAIN ══════════ -->
+<main>
+
+  <!-- ══ LESSON 4.1 ══ -->
+  <section class="lesson" id="l41">
+    <div class="lesson-header">
+      <div class="lesson-num">4.1</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">In a Station of the Metro</h1>
+        <p class="lesson-byline">by Ezra Pound — Imagism &amp; Modernism</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Discuss imagism and its proponents</li>
+      <li>Determine the tenets of imagism</li>
+      <li>Explain the imagery and symbols in the poem and their importance to theme development</li>
+    </div>
+
+    <h2>About Ezra Pound (1885–1972)</h2>
+    <p>Ezra Loomis Pound was an American poet and critic — a supremely energetic entrepreneur of the arts who did more than any other single figure to advance a "modern" movement in English and American literature. He promoted <strong>Imagism</strong>, a movement centered on clarity, brevity, and rhythm.</p>
+    <p>Pound drew inspiration from the clarity of <strong>Chinese and Japanese verse</strong> as well as <strong>Greek classics</strong> to combat increasing generalities in poetry. He is often called the <em>"Father of Modernism."</em></p>
+
+    <div class="callout callout--gold">
+      <div class="callout-icon">📌</div>
+      <div class="callout-body">
+        <strong>Pound's Definition of the Image</strong>
+        <p>"That which presents an intellectual and emotional complex in an instant of time." He believed presenting such a complex instantaneously gives a "sense of sudden liberation… freedom from time limits and space limits."</p>
+      </div>
+    </div>
+
+    <h2>What is Imagism?</h2>
+    <p>Imagism was born in <strong>England and America in the early 20th century</strong>. It was a reactionary movement against Romanticism and Victorian poetry, emphasizing <strong>simplicity, clarity of expression, and precision</strong> through the use of exacting visual images.</p>
+    <p>It was rooted in ideas first developed by English philosopher-poet <strong>T. E. Hulme</strong>, who as early as 1908 spoke of poetry based on "an absolutely accurate presentation of its subject, with no excess verbiage." Hulme wrote that the language of poetry is a "visual concrete one…images in verse are not mere decoration, but the very essence."</p>
+
+    <div class="card-grid">
+      <div class="card card--gold">
+        <div class="card-label">Movement Type</div>
+        <div class="card-title">A Strand of Modernism</div>
+        <p>Imagism aimed to replace abstractions with concrete details that could be expounded through figuration — typically short, free verse poems.</p>
+      </div>
+      <div class="card card--teal">
+        <div class="card-label">Precursors</div>
+        <div class="card-title">Ancient Roots</div>
+        <p>Clear precursors in the concise, image-focused poems of ancient Greek lyricists and Japanese haiku poets — moved away from fixed meters and moral reflections.</p>
+      </div>
+      <div class="card card--rust">
+        <div class="card-label">Core Ideal</div>
+        <div class="card-title">The "Hard, Dry Image"</div>
+        <p>Subordinating everything to what Hulme called the "hard, dry image" — the opposite of romantic abstraction.</p>
+      </div>
+    </div>
+
+    <h2>The Three Tenets of Imagist Poetry</h2>
+    <div class="tenet">
+      <div class="tenet-num">a</div>
+      <div class="tenet-body">
+        <strong>Direct Treatment of the "Thing"</strong>
+        <p>Whether subjective or objective — focus on the "thing." A poem is imagined as an image of a thing. It is better to present one image in a lifetime than to produce voluminous works.</p>
+      </div>
+    </div>
+    <div class="tenet">
+      <div class="tenet-num">b</div>
+      <div class="tenet-body">
+        <strong>Use Absolutely No Word That Does Not Contribute to the Presentation</strong>
+        <p>Emphasis on immediacy, directness, and the ideal of presence. Implies stripping down of rhetorical ornament — the idea that truth is arrived at through reduction. <em>"Do not retell in mediocre verse what has already been done in good prose."</em></p>
+      </div>
+    </div>
+    <div class="tenet">
+      <div class="tenet-num">c</div>
+      <div class="tenet-body">
+        <strong>Compose in the Sequence of the Musical Phrase, Not the Metronome</strong>
+        <p>Gives more importance to individual details over patterns or sequences. It privileges the musical phrase over abstract, mechanical structure.</p>
+      </div>
+    </div>
+
+    <h2>The Poem</h2>
+    <div class="poem-block">
+      <div class="poem-title">In a Station of the Metro — Ezra Pound</div>
+      <div class="poem-text">The apparition of these faces in the crowd;
+Petals on a wet, black bough</div>
+      <div class="poem-attribution">First published 1913 · 14 words · 2 lines</div>
+    </div>
+
+    <h2>Poem Analysis</h2>
+    <table class="styled-table">
+      <thead>
+        <tr><th>Question</th><th>Analysis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Function of the Title</td>
+          <td>The title provides the setting — a metro (subway) station — that the poem itself does not describe directly. It acts as a third line of the poem, giving context to the images.</td>
+        </tr>
+        <tr>
+          <td>What is a metro?</td>
+          <td>An underground urban railway — dark, crowded, fast-moving. It represents the modern, industrial world. The setting is transient and anonymous.</td>
+        </tr>
+        <tr>
+          <td>What is an apparition? A bough?</td>
+          <td><strong>Apparition:</strong> a ghost-like vision, something fleeting and unreal. <strong>Bough:</strong> a branch of a tree. The contrast between industrial (metro) and natural (bough) is central.</td>
+        </tr>
+        <tr>
+          <td>What is being observed? The resulting metaphor?</td>
+          <td>The poet observes faces in a crowd and compares them to flower petals on a wet, black tree branch — a juxtaposition of the human and the natural world.</td>
+        </tr>
+        <tr>
+          <td>The word "apparition" — its effect</td>
+          <td>Makes the faces seem ghostly, fleeting, insubstantial — like spirits passing through. It gives an eerie, dreamlike quality to an otherwise mundane scene.</td>
+        </tr>
+        <tr>
+          <td>What do you see in line 2?</td>
+          <td>Petals on a wet, dark branch — delicate, organic beauty against something dark and rough. Vivid natural imagery juxtaposed with the urban setting.</td>
+        </tr>
+        <tr>
+          <td>How do the two images relate?</td>
+          <td>The faces = petals; the dark crowd = the wet black bough. The metaphor is effective — it generates both beauty and unease, showing how nature can be found even in urban modernity.</td>
+        </tr>
+        <tr>
+          <td>Is the persona inside or outside the poem?</td>
+          <td>The persona is an observer, part of the scene yet stepping back to contemplate it — both inside and outside simultaneously.</td>
+        </tr>
+        <tr>
+          <td>Structural associations</td>
+          <td>Two-line structure (a couplet) mirrors the poem's two-image structure — the observation and the metaphor. No punctuation except a semicolon, holding the images in tension.</td>
+        </tr>
+        <tr>
+          <td>What does the poem signify?</td>
+          <td>The beauty and transience of life even in modern, impersonal environments. It suggests that the crowd, like petals, is briefly beautiful but ultimately fleeting.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--navy">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>Why It's a Modernist Masterpiece</strong>
+        <p>"In a Station of the Metro" exemplifies modernism — a two-line poem with no rhyme or meter about the everyday experience of gazing into a crowded metro. Rather than telling a story, it lets a basic set of images do all the interpretive work.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.2 ══ -->
+  <section class="lesson" id="l42">
+    <div class="lesson-header">
+      <div class="lesson-num">4.2</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">A Leaf Falls</h1>
+        <p class="lesson-byline">by E. E. Cummings — Concrete Poetry &amp; Non-Conformism</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Recognize E. E. Cummings' style of writing</li>
+      <li>Explore the relationship between structure and meaning</li>
+      <li>Create a concrete poem</li>
+    </div>
+
+    <h2>About E. E. Cummings (Edward Estlin Cummings)</h2>
+    <p>E. E. Cummings is an innovative poet known for his <strong>lack of stylistic and structural conformity</strong>. At first he struggled financially because his poetry was not immediately appreciated. Later, his non-conformist approach began to be favored — he became one of the first poets to break new ground by writing in unique styles and breaking the rules most poets adhered to.</p>
+    <p>Cummings was non-conformist not only in his poetry but in his life and beliefs as well. His mind was not bound by rules, laws, and statutes — it wandered freely outside social norms, just as the style of his poetry wandered outside conventional forms.</p>
+
+    <h2>The Poem</h2>
+    <div class="concrete-poem">
+      <div class="poem-title">A Leaf Falls — E. E. Cummings (l(a)</div>
+      <span class="poem-text">l(a
+le
+af
+fa
+ll
+s)
+one
+l
+Iness</span>
+    </div>
+
+    <h2>Unpacking the Poem — How to Read It</h2>
+    <p>When the poem/text is laid horizontally, it reads as <strong>l(a leaf falls)oneliness</strong> — in other words, <em>"a leaf falls"</em> is embedded within the word <em>"loneliness."</em></p>
+
+    <table class="styled-table">
+      <thead>
+        <tr><th>Element</th><th>What It Does</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Isolated letter <strong>I</strong></td>
+          <td>Can initially appear to be the numeral <em>one</em> — emphasizing singularity.</td>
+        </tr>
+        <tr>
+          <td>The <strong>a</strong> in line 1 (indefinite article)</td>
+          <td>Represents singularity — there is only one leaf falling.</td>
+        </tr>
+        <tr>
+          <td>The <strong>le</strong> in line 2</td>
+          <td>The French word <em>le</em>, which is the equivalent of singularity again — reinforcing aloneness.</td>
+        </tr>
+        <tr>
+          <td>Lines 3 &amp; 4 — <strong>af</strong> and <strong>fa</strong></td>
+          <td>Reversing themselves, just as a leaf would flutter, twist, and turn as it falls.</td>
+        </tr>
+        <tr>
+          <td>Line 5 — <strong>ll</strong></td>
+          <td>Means really <em>two ones</em> — a paradox of being doubly alone.</td>
+        </tr>
+        <tr>
+          <td>Lines 6–9 read downwards</td>
+          <td>Spell <strong>soli</strong> — which in Latin means <em>only</em>.</td>
+        </tr>
+        <tr>
+          <td>Line 7 — <strong>one</strong></td>
+          <td>Directly spells out the word "one" — there is only one.</td>
+        </tr>
+        <tr>
+          <td>The <strong>iness</strong> suffix</td>
+          <td>Could mean <em>the state of being one</em> — the state of being alone.</td>
+        </tr>
+        <tr>
+          <td>The only punctuation — <strong>parentheses</strong></td>
+          <td>Used to embed the image of a leaf falling into the word loneliness. It separates the <em>l</em> from the <em>a</em>, enforcing singularity. The <em>s</em> (traditionally for plural) is used to redefine singularity.</td>
+        </tr>
+        <tr>
+          <td><strong>Structure — pairs</strong></td>
+          <td>The poem goes in pairs to imitate the way a leaf falls and emphasize the image it conveys.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Symbolism: Why Does a Leaf Fall?</h2>
+    <div class="card-grid">
+      <div class="card card--teal">
+        <div class="card-label">Symbol</div>
+        <div class="card-title">The Tree</div>
+        <p>A symbol of <strong>life</strong>. Leaves fall when they die — separated from the source of life.</p>
+      </div>
+      <div class="card card--rust">
+        <div class="card-label">Symbol</div>
+        <div class="card-title">The Leaf</div>
+        <p>The individual — brief, fragile. Its final destination is <strong>death</strong>. The final line: <em>"we die alone."</em></p>
+      </div>
+      <div class="card card--navy">
+        <div class="card-label">Emotion</div>
+        <div class="card-title">Loneliness Outside the Brackets</div>
+        <p>Represents the feeling of <strong>the one left behind</strong> — those who remain after a death or departure.</p>
+      </div>
+    </div>
+
+    <h2>What is Concrete Poetry?</h2>
+    <div class="callout callout--gold">
+      <div class="callout-icon">📐</div>
+      <div class="callout-body">
+        <strong>Definition</strong>
+        <p>In a concrete poem, the <strong>placement of words on the page is related to the meaning of the poem</strong>. To fully appreciate it, one not only has to read the words but also <em>see</em> it as a visual object.</p>
+      </div>
+    </div>
+
+    <div class="callout callout--teal">
+      <div class="callout-icon">✍️</div>
+      <div class="callout-body">
+        <strong>E. E. Cummings' Legacy</strong>
+        <p><em>A Leaf Falls</em> lacks conformity, yet is a masterpiece that speaks a larger-than-life message through the power play of images and symbols. The author broke free of formal restrictions of rhyme and meter, resulting in what is known today as <strong>free verse</strong> — oscillating between minimalist (as few words as possible) and epic (working on a massive scale).</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.3 ══ -->
+  <section class="lesson" id="l43">
+    <div class="lesson-header">
+      <div class="lesson-num">4.3</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">Mother to Son</h1>
+        <p class="lesson-byline">by Langston Hughes — Harlem Renaissance &amp; Dramatic Monologue</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Analyze the symbols in the poem</li>
+      <li>Interpret the highlighted poetic elements</li>
+      <li>Explain the poet's attitude towards the subject matter</li>
+    </div>
+
+    <h2>About Langston Hughes (1902–1967)</h2>
+    <p>Langston Hughes is remembered as one of the key figures of the <strong>Harlem Renaissance</strong> — a vibrant artistic movement that exploded during the 1920s in Harlem, a neighborhood in Manhattan. Harlem became a hotbed of Black intellectual and literary life, with poets, scholars, and writers from around the country coming together.</p>
+    <p>Though they often disagreed with each other, these artists shared common goals: to develop literature that expressed the full history of Black culture — its triumphs and tragedies — and to use literature to protest contemporary racism.</p>
+
+    <div class="callout callout--rust">
+      <div class="callout-icon">⚖️</div>
+      <div class="callout-body">
+        <strong>Historical Context: Jim Crow Laws</strong>
+        <p>During the first half of the 20th century, Jim Crow laws — state and local statutes meant to marginalize African Americans — denied them the right to vote, hold jobs, or get an education. Black communities were forced into separate, frequently cramped, crowded, and unsafe schools and neighborhoods. These laws not only separated communities but made it much harder for Black people to survive and thrive.</p>
+      </div>
+    </div>
+
+    <h2>The Poem</h2>
+    <div class="poem-block">
+      <div class="poem-title">Mother to Son — Langston Hughes</div>
+      <div class="poem-text">Well, son, I'll tell you:
+Life for me ain't been no crystal stair.
+It's had tacks in it,
+And splinters,
+And boards torn up,
+And places with no carpet on the floor—
+Bare.
+But all the time
+I'se been a-climbin' on,
+And reachin' landin's,
+And turnin' corners,
+And sometimes goin' in the dark
+Where there ain't been no light.
+So boy, don't you turn back.
+Don't you set down on the steps
+'Cause you finds it's kinder hard.
+Don't you fall now—
+For I'se still goin', honey,
+I'se still climbin',
+And life for me ain't been no crystal stair.</div>
+    </div>
+
+    <h2>Poem Analysis</h2>
+
+    <h3>Central Metaphor: The Staircase</h3>
+    <p>The entire poem is built on one extended metaphor — <strong>life as a staircase</strong>. The mother compares her life journey to climbing a long, hard, dangerous staircase — not a smooth crystal one, but one full of obstacles.</p>
+
+    <table class="inference-table">
+      <thead>
+        <tr><th>Textual Clue</th><th>Inference / Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"tacks in it and splinters"</td>
+          <td>Life has been painful and hurtful — the small everyday struggles and setbacks.</td>
+        </tr>
+        <tr>
+          <td>"boards torn up"</td>
+          <td>Life has been broken and unstable — there were no easy foundations to stand on.</td>
+        </tr>
+        <tr>
+          <td>"places with no carpet on the floor"</td>
+          <td>Life has lacked comfort, luxury, and ease — extreme poverty and hardship.</td>
+        </tr>
+        <tr>
+          <td>"I'se been a-climbin' on… reaching landin's… turning corners"</td>
+          <td>Despite all hardships, she has kept moving forward, making progress step by step.</td>
+        </tr>
+        <tr>
+          <td>"ain't been no light"</td>
+          <td>She has faced periods of complete hopelessness and despair — yet she persevered.</td>
+        </tr>
+        <tr>
+          <td>"Don't you set down on the steps… 'cause you finds it's kinder hard"</td>
+          <td>She urges her son never to give up simply because life is difficult.</td>
+        </tr>
+        <tr>
+          <td>"Don't you fall now — For I'se still goin'"</td>
+          <td>She feels deeply determined and resilient — still moving, still fighting despite her age and struggles.</td>
+        </tr>
+        <tr>
+          <td>"life ain't been no crystal stair"</td>
+          <td>Life has never been easy or beautiful for her — but she has lived it fully and with dignity.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Symbols in the Poem</h3>
+    <div class="card-grid">
+      <div class="card card--gold">
+        <div class="card-label">Symbol</div>
+        <div class="card-title">Crystal Stair</div>
+        <p>Represents a life of ease, privilege, and luxury — something the mother has never had. Perfection and effortless beauty.</p>
+      </div>
+      <div class="card card--rust">
+        <div class="card-label">Symbol</div>
+        <div class="card-title">Tacks, Splinters &amp; Torn Boards</div>
+        <p>Represent the specific hardships, pains, and injustices she faced — obstacles on the journey of life.</p>
+      </div>
+      <div class="card card--teal">
+        <div class="card-label">Symbol</div>
+        <div class="card-title">The Climbing / Darkness</div>
+        <p>Represents ongoing perseverance and resilience. The dark represents hopeless times — yet she climbed through them anyway.</p>
+      </div>
+    </div>
+
+    <h2>Poetic Elements</h2>
+
+    <h3>Diction &amp; Dialect</h3>
+    <p>Hughes uses words like <em>ain't</em>, <em>I'se</em>, and <em>climbin'</em> — language common in Black culture. This diction reflects the mother's identity, authenticity, and the cultural milieu she comes from. It is not seen as incorrect but as rich, culturally expressive language.</p>
+
+    <h3>Dramatic Monologue</h3>
+    <div class="callout callout--navy">
+      <div class="callout-icon">🎭</div>
+      <div class="callout-body">
+        <strong>What is a Dramatic Monologue?</strong>
+        <p>A poem in which the poet takes on the voice of another person. Dramatic monologues have no formal requirements — no meter or rhyme scheme. This gives Hughes the freedom to capture the precise sound of the mother's voice authentically. The persona is a composite "mother" — not just Hughes's own mother, but a symbol of every Black mother who endured such hardships.</p>
+      </div>
+    </div>
+
+    <h3>Rhythm</h3>
+    <p>The poem has <strong>no rhyme scheme</strong> but has a distinct beat — it flows in a weary but determined delivery and builds like a stairway, one step at a time.</p>
+
+    <div class="pull-quote">
+      <blockquote>"This poem teaches a valuable life lesson about never giving up. Even when life is getting more difficult and one thinks he or she cannot go on, he or she needs to keep climbing."</blockquote>
+      <cite>— Module 4.3 Synthesis</cite>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.4 ══ -->
+  <section class="lesson" id="l44">
+    <div class="lesson-header">
+      <div class="lesson-num">4.4</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">Graduation</h1>
+        <p class="lesson-byline">by Maya Angelou — Racial Segregation &amp; Dignity</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Analyze significant lines from the text</li>
+      <li>Discuss the predominant character trait of the persona</li>
+    </div>
+
+    <h2>About the Essay</h2>
+    <p>This essay is a personal narrative (memoir) about Maya Angelou's <strong>eighth-grade graduation day</strong> while she was in Stamps, Arkansas. It contrasts the school for Black students with the school for white students, and discusses the atrocities a Black student faced due to the oppression of powerful whites. It is set in <strong>1940</strong>, when the U.S. was approaching the 80th anniversary of the abolition of slavery — yet social oppression of African Americans had steadily increased.</p>
+
+    <h2>Summary of the Essay</h2>
+
+    <h3>Pre-Graduation</h3>
+    <p>Maya and all Black students had access only to the grammar school — not the high school. Every year, graduation gripped the community of Stamps. Underclassmen fill the vacuum left by graduating seniors, who begin to be treated like adults. Few Lafayette County Training School graduates could go on to one of the South's agricultural and mechanical colleges — the only higher education available to Black students at that time.</p>
+    <p>Parents ordered new clothes; Angelou wore yellow pique dresses like the other graduating girls. The joy of the upcoming graduation <em>"lightens the author's spirit"</em> — she says, <em>"I had taken to smiling more often, and my jaws hurt from the unaccustomed activity."</em></p>
+
+    <h3>Graduation Day</h3>
+    <p>On graduation day, Maya receives gifts: a <strong>Mickey Mouse watch</strong> from her grandmother Momma; <strong>embroidered handkerchiefs</strong> from her friend Louise; <strong>nickels or dimes</strong> from proud store customers; and a collection of <strong>Edgar Allan Poe poems</strong> from her brother Bailey. Students gather in the auditorium, sing the national anthem, and recite the pledge of allegiance. But unlike their usual assembly, the Negro National Anthem ("Lift Ev'ry Voice and Sing" by James Weldon Johnson and J. Rosamond Johnson) is not sung — giving Angelou a sense of foreboding.</p>
+
+    <h3>Edward Donleavy — The Commencement Speaker</h3>
+    <p>The principal introduces <strong>Edward Donleavy</strong>, the white state representative from Texarkana. Donleavy details improvements he secured for the white high school's arts and sciences — and for the Training School's <em>sports facilities only</em>. The disparity deeply affects Angelou: white students were going to have the chance to become Galileos and scientists, while Black boys could only aspire to be Jesse Owenses or Joe Louises — athletic heroes only.</p>
+
+    <h3>Henry Reed — The Valedictorian</h3>
+    <p>The mood shifts when class valedictorian <strong>Henry Reed</strong> — a small boy with hooded eyes and a broad nose — rises to give his speech based on Hamlet's "To Be or Not to Be" soliloquy. Afterward, he turns to the graduating class and begins to sing <strong>"Lift Ev'ry Voice and Sing."</strong> The class, teachers, and audience join in. The song takes on new meaning for Angelou, <em>lifting her spirits.</em> She ends by thanking the known and unknown Black poets and songwriters who made life more bearable.</p>
+
+    <h2>SOAPS Analysis</h2>
+    <table class="styled-table">
+      <thead><tr><th>Element</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Speaker</td><td>Three speakers: Maya herself, Henry Reed (valedictorian), and Mr. Edward Donleavy (commencement speaker)</td></tr>
+        <tr><td>Occasion</td><td>Maya's eighth-grade (middle school) graduation</td></tr>
+        <tr><td>Audience</td><td>Middle school students and their parents</td></tr>
+        <tr><td>Purpose</td><td>To inform the audience what it meant to graduate during segregated times</td></tr>
+        <tr><td>Style</td><td>Graphic and well expressed — allows the reader to visualize the experience and feel what it meant to attend school during segregation</td></tr>
+        <tr><td>Tone</td><td>Begins as didactic and reflective; shifts to suspicion and worry as different speakers present their views</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Central Theme</h2>
+    <div class="callout callout--rust">
+      <div class="callout-icon">✊</div>
+      <div class="callout-body">
+        <strong>Perseverance Through Persecution Forges Dignity</strong>
+        <p>Racial segregation was prevalent in 1940s America. The narrative highlights the importance of graduation not just as a personal milestone but as a symbol of community expectation, hope, and quiet resistance in the face of systematic oppression. At the end, the communal singing of "Lift Ev'ry Voice and Sing" becomes an act of cultural pride and defiance.</p>
+      </div>
+    </div>
+
+    <h2>Key Terms</h2>
+    <div class="key-terms">
+      <div class="term-item">
+        <div class="term-word">Segregation</div>
+        <div class="term-def">The enforced separation of different racial groups in a community or country.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-word">Jim Crow Laws</div>
+        <div class="term-def">State and local statutes meant to marginalize African Americans by denying them basic rights.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-word">Foreboding</div>
+        <div class="term-def">A strong inner feeling that something bad is about to happen.</div>
+      </div>
+      <div class="term-item">
+        <div class="term-word">Valedictorian</div>
+        <div class="term-def">The student who delivers the farewell speech at a graduation — typically the top academic achiever.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.5 ══ -->
+  <section class="lesson" id="l45">
+    <div class="lesson-header">
+      <div class="lesson-num">4.5</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">Hills Like White Elephants</h1>
+        <p class="lesson-byline">by Ernest Hemingway — Symbolism, Iceberg Theory &amp; Subtext</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Analyze significant scenes and symbolism in the text</li>
+      <li>Explain the author's attitude toward the event and the characters</li>
+    </div>
+
+    <h2>Background</h2>
+    <p><em>Hills Like White Elephants</em> was first published in <strong>August 1927</strong> and became an important piece in Hemingway's second short story collection, <em>Men Without Women</em>. Hemingway wrote it soon after the publication of his 1926 novel <em>The Sun Also Rises</em>, while living in Paris. With these works, Hemingway was embraced by the expatriate literary community in Paris and received strong reviews worldwide.</p>
+
+    <div class="callout callout--gold">
+      <div class="callout-icon">🧊</div>
+      <div class="callout-body">
+        <strong>Hemingway's Iceberg Theory</strong>
+        <p>The story demonstrates Hemingway's famous <em>Iceberg Theory</em> — the deeper meaning of a story lies below the surface, like the submerged mass of an iceberg. What is <em>not said</em> carries as much (or more) weight than what is said. The story is told nearly entirely through dialogue, yet much is left unsaid.</p>
+      </div>
+    </div>
+
+    <h2>Story Summary</h2>
+    <p>The story is a conversation between a young woman (called "the girl" or "<strong>Jig</strong>") and an unnamed American man, waiting for a train at a junction station in Spain. Through their tight, brittle conversation, much is revealed about their personalities and a serious but unnamed conflict between them. The story's ending is deliberately ambiguous.</p>
+
+    <h2>Key Symbols &amp; Their Meanings</h2>
+
+    <table class="styled-table">
+      <thead><tr><th>Symbol</th><th>Literal Meaning</th><th>Symbolic Meaning</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>White Elephants (the hills)</td>
+          <td>Hills in the landscape that appear white in the sun</td>
+          <td>A "white elephant" is a costly, unwanted burden. Symbolizes the pregnancy — something large, impossible to ignore, that the man doesn't want to deal with.</td>
+        </tr>
+        <tr>
+          <td>The Two Sides of the Valley</td>
+          <td>One side: barren, dry, no shade. Other side: fields, trees, the river</td>
+          <td>The barren side = their current childless life of travel and pleasure. The fertile side = the possibility of family and a settled life — what the girl desires.</td>
+        </tr>
+        <tr>
+          <td>The Railroad Tracks</td>
+          <td>Train tracks at a junction</td>
+          <td>A crossroads — the couple faces a major life decision. The train represents the choice they must make; once they board, there is no turning back.</td>
+        </tr>
+        <tr>
+          <td>The Bead Curtain</td>
+          <td>Strings of bamboo beads hung in the bar doorway</td>
+          <td>Represents the barrier between the couple's current surface-level avoidance and the truth. The girl frequently looks at it — it is what separates their shallow talk from reality.</td>
+        </tr>
+        <tr>
+          <td>Alcohol / Drinks</td>
+          <td>Beer, Anis del Toro, absinthe</td>
+          <td>Represents the couple's avoidance of real communication — they drink to escape the conversation they need to have. Central to their dysfunctional dynamic.</td>
+        </tr>
+        <tr>
+          <td>"The Operation"</td>
+          <td>Never named directly</td>
+          <td>An abortion. The man is pressuring Jig to have one. The unnamed nature reflects Hemingway's Iceberg Theory — real meaning lies beneath the surface of the dialogue.</td>
+        </tr>
+        <tr>
+          <td>The Bags with Hotel Labels</td>
+          <td>Their travel luggage</td>
+          <td>Represents their rootless, uncommitted lifestyle — moving from place to place, never settling. The man views their problem as "baggage" to be left behind.</td>
+        </tr>
+        <tr>
+          <td>Light vs. Shade</td>
+          <td>The sun is harsh; they sit in shade</td>
+          <td>The harsh sunlight represents the glaring truth of their situation — the truth they are trying to avoid by staying in the comfortable "shade" of denial.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Character Dynamics</h2>
+    <div class="callout callout--navy">
+      <div class="callout-icon">⚡</div>
+      <div class="callout-body">
+        <strong>The Power Imbalance</strong>
+        <p>The man controls the conversation — he speaks Spanish and must translate for the girl, highlighting an uneven power dynamic. His domination is subtle but sinister: he doesn't just want her to do what he wants — he wants her to <em>want</em> what he wants. There are very few decisions or comments the girl can make without his direction or agreement.</p>
+      </div>
+    </div>
+
+    <h2>Answers to Key Questions</h2>
+    <table class="styled-table">
+      <thead><tr><th>#</th><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>The story takes place at a busy railroad station in France.</td><td><strong>NC</strong> — It takes place in Spain, at a junction between Barcelona and Madrid.</td></tr>
+        <tr><td>2</td><td>Jig's lover is never named in the story.</td><td><strong>C</strong> — He is referred to only as "the American."</td></tr>
+        <tr><td>3</td><td>Jig and her lover have shared a shallow, self-centered life.</td><td><strong>C</strong> — Their luggage labels show a life of constant, rootless travel.</td></tr>
+        <tr><td>4</td><td>Their conversation shows a deep understanding of each other.</td><td><strong>NC</strong> — Their conversation is characterized by silence, small talk, and irritation.</td></tr>
+        <tr><td>5</td><td>When Jig notices the hills look like white elephants, her lover agrees.</td><td><strong>NC</strong> — He says "I've never seen one," dismissing her observation.</td></tr>
+        <tr><td>6</td><td>Jig reluctantly tells her lover that she is pregnant.</td><td><strong>NC</strong> — The pregnancy is never directly stated; it is implied through subtext.</td></tr>
+        <tr><td>7</td><td>Jig's lover presses her to have an abortion so their life won't change.</td><td><strong>C</strong> — He frames "the operation" as simple and pressures her repeatedly.</td></tr>
+        <tr><td>8</td><td>Jig also wants their present life to continue.</td><td><strong>NC</strong> — Jig sees beauty and fertility in the landscape; she desires a different kind of life.</td></tr>
+        <tr><td>9</td><td>At the story's conclusion, Jig has made plans to end her pregnancy.</td><td><strong>NC</strong> — The ending is ambiguous; no decision is confirmed.</td></tr>
+        <tr><td>10</td><td>The story is developed almost completely through dialogue.</td><td><strong>C</strong> — Hemingway uses dialogue to reveal character and conflict.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Additional Questions</h2>
+    <table class="styled-table">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Where does the phrase "white elephant" come from?</td>
+          <td>From Southeast Asian tradition — white elephants were rare, sacred animals given as gifts to rivals by kings because they were enormously expensive to maintain but could not be refused or discarded. Thus, a "white elephant" became something burdensome and unwanted.</td>
+        </tr>
+        <tr>
+          <td>Why is the title appropriate?</td>
+          <td>The pregnancy (like a white elephant) is a large, impossible-to-ignore burden — especially for the man, who sees it as costly and unwanted. The hills look white and elephant-like in the sun, making the title work both literally and figuratively.</td>
+        </tr>
+        <tr>
+          <td>How is the landscape described and what is its symbolic significance?</td>
+          <td>One side: barren and dry. Other side: fertile fields and trees by the river. This dual landscape mirrors the couple's choice — to end the pregnancy and continue their barren life of travel, or to embrace the fertile possibility of family.</td>
+        </tr>
+        <tr>
+          <td>What does "I feel fine" imply at the end?</td>
+          <td>It is ironic. She has been smothered into silence and resigned agreement. "Fine" does not mean genuinely well — it signals her defeat, her surrender to the man's controlling will. No real resolution has been reached.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.6 ══ -->
+  <section class="lesson" id="l46">
+    <div class="lesson-header">
+      <div class="lesson-num">4.6</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">Character Analysis</h1>
+        <p class="lesson-byline">Direct &amp; Indirect Characterization — Hills Like White Elephants</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Discuss the predominant traits of the characters in the story</li>
+      <li>Make a profile of the major characters</li>
+    </div>
+
+    <h2>What is Characterization?</h2>
+    <p>Characterization refers to the <strong>way in which the author reveals the characters</strong> in his or her work.</p>
+
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>How It Works</th><th>Key Features</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Direct Characterization</td>
+          <td>The writer directly comments on the character's personality — telling the reader what the character is like. Done by narrator, another character, or the character himself.</td>
+          <td>Achieves brevity; moves the story forward. The writer <strong>tells</strong> about the character.</td>
+        </tr>
+        <tr>
+          <td>Indirect Characterization</td>
+          <td>The writer reveals character through Speech, Thoughts, Effect on others, Actions, and Looks (STEAL). Readers must draw their own conclusions.</td>
+          <td>Paints more vivid images; appeals to imagination. The writer <strong>shows</strong> what the character is like.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--gold">
+      <div class="callout-icon">🔍</div>
+      <div class="callout-body">
+        <strong>STEAL — The 5 Factors of Indirect Characterization</strong>
+        <p><strong>S</strong>peech — what the character says and how / <strong>T</strong>houghts — private feelings / <strong>E</strong>ffect — how the character affects others / <strong>A</strong>ctions — how the character behaves / <strong>L</strong>ooks — how the character appears to others</p>
+      </div>
+    </div>
+
+    <h2>Character Profiles — Hills Like White Elephants</h2>
+
+    <!-- American Profile -->
+    <div class="char-profile">
+      <div class="char-profile-header" style="background: var(--navy);">
+        <div>
+          <div class="char-name">The American (Man)</div>
+          <div class="char-role">Jig's companion — controlling, self-focused</div>
+        </div>
+      </div>
+      <div class="char-profile-body">
+        <div class="char-trait">
+          <div class="char-trait-label">Speech</div>
+          <p>Uses repetitive, persuasive language ("it's perfectly simple," "I know it's perfectly simple"). His tone is dismissive and controlling. He speaks Spanish, highlighting his authority. He often talks over or redirects Jig.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Thoughts</div>
+          <p>Focused entirely on returning to their former lifestyle of pleasure and freedom. He sees the pregnancy as a problem to be solved, not a life to be considered. He is not open to having a family.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Effect on Others</div>
+          <p>Smothers Jig into silence and agreement. Creates an environment where she feels she cannot express her true feelings. His presence is oppressive even when his words sound caring.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Actions</div>
+          <p>Carries bags to the other platform — suggesting he has already decided they are moving on. Orders drinks, translates for Jig, and continues talking even when she begs him to stop.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Looks</div>
+          <p>Not physically described — Hemingway's deliberate vagueness allows any man to inhabit this role. The lack of description suggests universality of his behavior.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Predominant Trait</div>
+          <p><strong>Controlling &amp; Self-Centered</strong> — He wants Jig to want what he wants. His manipulation is subtle but persistent; he never stops trying to bend her will to his.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jig Profile -->
+    <div class="char-profile">
+      <div class="char-profile-header" style="background: var(--teal);">
+        <div>
+          <div class="char-name">Jig (The Girl)</div>
+          <div class="char-role">Pregnant young woman — perceptive, conflicted, ultimately silenced</div>
+        </div>
+      </div>
+      <div class="char-profile-body">
+        <div class="char-trait">
+          <div class="char-trait-label">Speech</div>
+          <p>Uses sarcasm and irony (e.g., "Everything tastes of licorice. Especially all the things you've waited so long for."). Her tone shifts from playful to weary to resigned. She eventually begs him to stop talking.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Thoughts</div>
+          <p>Sees beauty and possibility in the fertile side of the landscape — she imagines a different kind of life. She is torn between keeping the pregnancy and yielding to the man's wishes to preserve their relationship.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Effect on Others</div>
+          <p>Her insights and observations (comparing the hills to white elephants) introduce the story's central metaphor. She forces the man — and the reader — to confront what is really happening.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Actions</div>
+          <p>Walks to the end of the station, looks at the fertile landscape, holds the bead curtain — all physical acts that reflect her inner desire for a different life. Ultimately she sits back down and says "I feel fine," surrendering.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Looks</div>
+          <p>Also vaguely described — identified only as "the girl," suggesting youth and vulnerability. Her hat removed at the beginning hints at a lowering of defenses.</p>
+        </div>
+        <div class="char-trait">
+          <div class="char-trait-label">Predominant Trait</div>
+          <p><strong>Perceptive but Trapped</strong> — She understands their situation clearly ("once they take it away, you never get it back") but feels powerless to act on her desires. Her final resignation is tragic.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout--teal">
+      <div class="callout-icon">📝</div>
+      <div class="callout-body">
+        <strong>Why Hemingway Uses Indirect Characterization</strong>
+        <p>Hemingway gives no physical descriptors and uses vague character names. This allows a greater number of readers to identify with the characters — without identifying descriptors, each character could be anyone. To learn about them, readers must observe behavior, speech, and responses. This is the Iceberg Theory applied to characterization.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ══ LESSON 4.7 ══ -->
+  <section class="lesson" id="l47">
+    <div class="lesson-header">
+      <div class="lesson-num">4.7</div>
+      <div class="lesson-title-wrap">
+        <h1 class="lesson-title">Synthesis Paper</h1>
+        <p class="lesson-byline">Writing a Synthesis Essay on 20th Century Literature</p>
+      </div>
+    </div>
+
+    <div class="lesson-targets">
+      <div class="t-label">🎯 Learning Targets</div>
+      <li>Discuss the predominant themes, literary characteristics, or writing styles of the 20th century</li>
+      <li>Write a synthesis paper</li>
+    </div>
+
+    <h2>What is a Synthesis Paper?</h2>
+    <p>A synthesis paper is a <strong>written document that combines ideas from different sources about any topic, theme, or idea</strong>. To <em>synthesize</em> means to create a single whole by keeping separate points together. It collects chunks of material and facts from various sources to set up a particular assertion affirming one stand on the issue.</p>
+    <p>This writing involves various challenges — it not only requires summarizing ideas but also providing the <em>links</em> between information from different sources.</p>
+
+    <h2>Three Types of Synthesis Essays</h2>
+    <div class="card-grid">
+      <div class="card card--gold">
+        <div class="card-label">Type 1</div>
+        <div class="card-title">Argument Synthesis</div>
+        <p>Presents the author's view and opinions. Arranges information rationally to support a thesis. Proves the main claim through persuasive methods — uses facts, statistics, citations, and quotes.</p>
+      </div>
+      <div class="card card--teal">
+        <div class="card-label">Type 2</div>
+        <div class="card-title">Review Synthesis</div>
+        <p>Describes discussion done on a previous topic and critically analyzes the sources. Indicates where deep research is needed or where issues haven't been adequately described. Common in medicine and social science.</p>
+      </div>
+      <div class="card card--purple">
+        <div class="card-label">Type 3</div>
+        <div class="card-title">Explanatory Synthesis</div>
+        <p>Aims to make the audience understand the chosen topic. Breaks the whole topic into separate parts and represents each clearly. Reflects information in an objective, sober manner.</p>
+      </div>
+    </div>
+
+    <h2>Structure of a Synthesis Paper</h2>
+    <div class="synth-structure">
+      <div class="s-title">📄 Typical Synthesis Paper Structure</div>
+      <div class="synth-tree">
+        <div class="synth-section">INTRODUCTION</div>
+        <div class="synth-item">Thesis statement</div>
+        <div class="synth-item">Main argument 1 (preview)</div>
+        <div class="synth-item">Main argument 2 (preview)</div>
+        <div class="synth-item">Main argument 3 (preview)</div>
+        <div class="synth-section">BODY</div>
+        <div class="synth-item">Main Argument 1</div>
+        <div class="synth-item" style="padding-left:2.8rem">Evidence</div>
+        <div class="synth-item" style="padding-left:2.8rem">Analysis of Evidence</div>
+        <div class="synth-item">Main Argument 2</div>
+        <div class="synth-item" style="padding-left:2.8rem">Evidence</div>
+        <div class="synth-item" style="padding-left:2.8rem">Analysis of Evidence</div>
+        <div class="synth-item">Main Argument 3</div>
+        <div class="synth-item" style="padding-left:2.8rem">Evidence</div>
+        <div class="synth-item" style="padding-left:2.8rem">Analysis of Evidence</div>
+        <div class="synth-section">CONCLUSION</div>
+        <div class="synth-item">Restate main idea — get your view straight</div>
+      </div>
+    </div>
+
+    <h2>How to Write a Synthesis Essay — Step by Step</h2>
+    <div class="tenet">
+      <div class="tenet-num" style="background:var(--teal)">1</div>
+      <div class="tenet-body">
+        <strong>Understand the Concept</strong>
+        <p>The primary purpose is to make connections between small parts of the work. The goal is to present supporting evidence. Do thorough research about the topic.</p>
+      </div>
+    </div>
+    <div class="tenet">
+      <div class="tenet-num" style="background:var(--teal)">2</div>
+      <div class="tenet-body">
+        <strong>Choose a Suitable Topic</strong>
+        <p>Choose a broad topic that can bring together several sources. You should have a minimum of three sources. Analyze all sources relating to your topic. Note down important points. Fully understand the topic and mark your observations.</p>
+      </div>
+    </div>
+    <div class="tenet">
+      <div class="tenet-num" style="background:var(--teal)">3</div>
+      <div class="tenet-body">
+        <strong>Write a Thesis Statement</strong>
+        <p>After research and careful reading, formulate an opinion. Your ideas and thoughts should be present in the thesis. Place it at the beginning or end of the essay.</p>
+      </div>
+    </div>
+    <div class="tenet">
+      <div class="tenet-num" style="background:var(--teal)">4</div>
+      <div class="tenet-body">
+        <strong>Revise Your Material</strong>
+        <p>Select facts, ideas, and statistics that support your thesis. If you are arguing against an idea, have evidence to disprove it (rebuttal / concession). Prepare an outline first — it will guide the entire process.</p>
+      </div>
+    </div>
+
+    <h2>Writing Tips</h2>
+    <div class="card-grid">
+      <div class="card card--navy">
+        <div class="card-label">Voice</div>
+        <div class="card-title">Write in 3rd Person</div>
+        <p>Use complete, unambiguous sentences. Write in the active voice. Give enough information to display reliability.</p>
+      </div>
+      <div class="card card--gold">
+        <div class="card-label">Flow</div>
+        <div class="card-title">Use Transitions</div>
+        <p>Transitions help make the essay easier to read and show logical connections between ideas and sources.</p>
+      </div>
+      <div class="card card--teal">
+        <div class="card-label">Final Steps</div>
+        <div class="card-title">Revise, Proofread &amp; Cite</div>
+        <p>These are the final stages. Check grammar, spelling, and that all sources are properly cited.</p>
+      </div>
+    </div>
+
+    <h2>Thematic Summary: 20th Century Literary Pieces in This Module</h2>
+    <table class="styled-table">
+      <thead><tr><th>Literary Piece</th><th>Author</th><th>Theme / Style / Characteristic</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>In a Station of the Metro</td>
+          <td>Ezra Pound</td>
+          <td>Imagism — clarity, brevity, and concrete visual imagery. The beauty of the transient in an urban setting.</td>
+        </tr>
+        <tr>
+          <td>A Leaf Falls</td>
+          <td>E. E. Cummings</td>
+          <td>Concrete poetry — structure embodies meaning. Loneliness and mortality explored through visual form.</td>
+        </tr>
+        <tr>
+          <td>Mother to Son</td>
+          <td>Langston Hughes</td>
+          <td>Harlem Renaissance — dramatic monologue, dialect as cultural identity. Perseverance in the face of adversity.</td>
+        </tr>
+        <tr>
+          <td>Graduation</td>
+          <td>Maya Angelou</td>
+          <td>Personal narrative / memoir — racial segregation and dignity. Art and community as resistance to oppression.</td>
+        </tr>
+        <tr>
+          <td>Hills Like White Elephants</td>
+          <td>Ernest Hemingway</td>
+          <td>Iceberg Theory — subtext, symbolism, minimalist prose. Communication failure and power dynamics in relationships.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout--purple">
+      <div class="callout-icon">🔗</div>
+      <div class="callout-body">
+        <strong>Overall Idea Connecting All 20th Century Pieces</strong>
+        <p>The literature of the 20th century reflects a breaking away from traditional forms and a confrontation with the complexities of modern life — whether through the brevity of imagist poetry, the radical visual forms of concrete verse, the cultural resistance of the Harlem Renaissance, the personal narratives of racial struggle, or the understated realism of Hemingway's prose. Each work, in its own way, insists that language can be a vehicle for truth, beauty, and social consciousness.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>English 3 · Module 4.0 — <span>The 20th Century</span> · Study Notes</p>
+  <p style="margin-top:0.4rem">Philippine Science High School System · Lessons 4.1–4.7</p>
+</footer>
+
+</body>
+</html>
